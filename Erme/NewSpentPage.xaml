@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
+    x:Class="Erme.NewSpentPage">
+    <ContentPage.Content>
+        <StackLayout Padding="20">
+
+            <Label Text="Mire költöttél?" FontSize="14" />
+            <Entry x:Name="titleEntry" Margin="0,0,0,10" Placeholder="pl.: Porszívó" />
+
+            <Label Text="Összeg (Ft)" FontSize="14" />
+            <Entry x:Name="amountEntry" Margin="0,0,0,10" Placeholder="pl.: 12000" Keyboard="Numeric"/>
+
+            <Label Text="Kategória" FontSize="14" />
+            <Picker x:Name="categorySelect" Margin="0,0,0,10" Title="Kérlek válassz!" />
+
+            <Label Text="Dátum" FontSize="14" />
+            <DatePicker x:Name="dateSelect" Margin="0,0,0,20" Date="{x:Static system:DateTime.Today}" />
+
+            <Button x:Name="AddBtn" Clicked="AddBtn_Clicked" Text="Felviszem" Background="black" TextColor="gold" />
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -4,21 +4,31 @@
              x:Class="Erme.MainPage">
 
     <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
+
+
+        <Grid Padding="20,20,20,0" >
+            <Button x:Name="CategoriesButton" Clicked="CategoriesButton_Clicked" Text="Kategóriák" Background="Gray" TextColor="White" Grid.Column="0" />
+            <Button x:Name="BudgetButton" Clicked="BudgetButton_Clicked" Text="Keretek" Background="Gray" TextColor="White" Grid.Column="1" />
+            <Button x:Name="NewSpentButton" Clicked="NewSpentButton_Clicked" Text="Új költés" Background="Black" TextColor="Gold" Grid.Column="2" />
+        </Grid>
+
+        <ListView x:Name="collectionView"
+                  ItemTapped="Handle_ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <ViewCell>
+                        <ViewCell.ContextActions>  
+                            <MenuItem Text="Törlés" Clicked="Delete_Clicked" CommandParameter="{Binding .}" IsDestructive="True"></MenuItem>  
+                        </ViewCell.ContextActions>  
+                        <FlexLayout JustifyContent="SpaceBetween" Padding="20,12" Margin="0">
+                            <Label Text="{Binding Title}"/>
+                            <Label Text="{Binding Amount}" TextColor="Silver"/>
+                        </FlexLayout>
+                    </ViewCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </StackLayout>
 
 </ContentPage>

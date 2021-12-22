@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Class="Erme.BudgetPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+
+            <ListView x:Name="budgetView"
+                      SelectionMode="None"
+                      ItemsSource="{Binding Items}">
+                <ListView.Header>
+                    <StackLayout Padding="20,20,20,0">
+                        <Button Text="Költségkeret hozzáadása" Clicked="Add_Clicked" Background="black" TextColor="Gold" />
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <ViewCell.ContextActions>  
+                                <MenuItem Text="Törlés" Clicked="Delete_Clicked" CommandParameter="{Binding .}" IsDestructive="True"></MenuItem>  
+                            </ViewCell.ContextActions>  
+                            <FlexLayout JustifyContent="SpaceBetween" Padding="20,12" Margin="0">
+                                <Label Text="{Binding Month}"/>
+                                <Label Text="{Binding Amount}" TextColor="Silver"/>
+                                <Label Text="{Binding Alert}" TextColor="Red"/>
+                            </FlexLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Erme.CategoriesPage">
+  <ListView x:Name="MyListView"
+            SelectionMode="None"
+            ItemsSource="{Binding Items}">
+
+    <ListView.Header>
+        <StackLayout Padding="20,20,20,0">
+            <Label Text="Kategória hozzáadása" FontSize="14" />
+            <Entry x:Name="CatTitle" Placeholder="Kategória neve" Completed="CatAddBtn_Clicked" />
+        </StackLayout>
+    </ListView.Header>
+    
+    <!--Custom View Cells-->
+    <ListView.ItemTemplate>
+      <DataTemplate>
+        <ViewCell>
+            <ViewCell.ContextActions>  
+                <MenuItem Text="Törlés" Clicked="Delete_Clicked" CommandParameter="{Binding .}" IsDestructive="True"></MenuItem>  
+            </ViewCell.ContextActions>
+            <Label Padding="20,10" Text="{Binding Title}" 
+                   Style="{DynamicResource ListItemTextStyle}" />
+        </ViewCell>
+      </DataTemplate>
+    </ListView.ItemTemplate>
+    
+  </ListView>
+
+</ContentPage>
