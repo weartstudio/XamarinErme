@@ -22,9 +22,9 @@
                                 <MenuItem Text="Törlés" Clicked="Delete_Clicked" CommandParameter="{Binding .}" IsDestructive="True"></MenuItem>  
                             </ViewCell.ContextActions>  
                             <FlexLayout JustifyContent="SpaceBetween" Padding="20,12" Margin="0">
-                                <Label Text="{Binding Month}"/>
-                                <Label Text="{Binding Amount}" TextColor="Silver"/>
-                                <Label Text="{Binding Alert}" TextColor="Red"/>
+                                <Label Text="{Binding Month, StringFormat='{0:yyyy MMM}'}"/>
+                                <Label Text="{Binding Amount, StringFormat='{0:C0}'}" TextColor="Silver"/>
+                                <Label Text="{Binding Alert, StringFormat='{0}%'}" TextColor="Red"/>
                             </FlexLayout>
                         </ViewCell>
                     </DataTemplate>

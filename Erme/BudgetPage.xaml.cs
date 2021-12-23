@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-
+using Erme.Model;
+using Erme.Persistence;
 using Xamarin.Forms;
 
 namespace Erme
@@ -16,7 +17,7 @@ namespace Erme
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            budgetView.ItemsSource = await App.m.GetListBudget();
+            budgetView.ItemsSource = await App.m.GetListBudget(); 
         }
 
         async void Delete_Clicked(System.Object sender, System.EventArgs e)

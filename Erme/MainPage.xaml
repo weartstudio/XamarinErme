@@ -22,7 +22,7 @@
                         </ViewCell.ContextActions>  
                         <FlexLayout JustifyContent="SpaceBetween" Padding="20,12" Margin="0">
                             <Label Text="{Binding Title}"/>
-                            <Label Text="{Binding Amount}" TextColor="Silver"/>
+                            <Label Text="{Binding Amount, StringFormat='{0:C0}'}" TextColor="Silver"/>
                         </FlexLayout>
                     </ViewCell>
                 </DataTemplate>

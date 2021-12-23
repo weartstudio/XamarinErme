@@ -21,7 +21,7 @@ namespace Erme
         {
             base.OnAppearing();
             _title.Text = _x.Title;
-            _amount.Text = _x.Amount.ToString() + " Ft";
+            _amount.Text = _x.Amount.ToString("C0");
             _date.Text = _x.Date.Date.ToShortDateString();
 
             var cat = await App.m.GetSpecificCategoryById(_x.CategoryId);
