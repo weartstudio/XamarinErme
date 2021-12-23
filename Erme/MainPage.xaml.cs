@@ -71,5 +71,11 @@ namespace Erme
                 OnAppearing();
             }
         }
+
+        void HonapValaszto_SelectedIndexChanged(System.Object sender, System.EventArgs e)
+        {
+            var x = HonapValaszto.SelectedItem;
+
+        }
     }
 }

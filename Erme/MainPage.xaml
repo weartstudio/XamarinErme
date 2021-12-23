@@ -15,7 +15,7 @@
         <ListView x:Name="collectionView" ItemTapped="Handle_ItemTapped">
             <ListView.Header>
                 <StackLayout Padding="20,20,20,0">
-                    <Picker x:Name="HonapValaszto" />
+                    <Picker x:Name="HonapValaszto" SelectedIndexChanged="HonapValaszto_SelectedIndexChanged" />
                 </StackLayout>
             </ListView.Header>
             <ListView.ItemTemplate>
