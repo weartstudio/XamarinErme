@@ -21,17 +21,18 @@ namespace Erme
         protected override async void OnAppearing()
         {
             base.OnAppearing();
-            collectionView.ItemsSource = await App.m.GetListSpent();
 
             List<Spent> spents = await App.m.GetListSpent();
             List<DateTime> x = spents.Select(d => new DateTime(d.Date.Year, d.Date.Month, 1)).Distinct().ToList();
-            //HonapValaszto.ItemsSource = x;
+            x.Sort();
+            int megsz = x.Count;
             foreach (var item in x)
             {
                 string datumS = item.Year.ToString() + "-" + item.Month.ToString();
                 HonapValaszto.Items.Add(datumS);
             }
-            HonapValaszto.SelectedIndex = 1;
+            
+            HonapValaszto.SelectedIndex = megsz - 1;
         }
 
         private async void NewSpentButton_Clicked(object sender, EventArgs e)
@@ -72,10 +73,20 @@ namespace Erme
             }
         }
 
-        void HonapValaszto_SelectedIndexChanged(System.Object sender, System.EventArgs e)
+        async void HonapValaszto_SelectedIndexChanged(System.Object sender, System.EventArgs e)
         {
-            var x = HonapValaszto.SelectedItem;
-
+            string x = HonapValaszto.SelectedItem.ToString();
+            List<Spent> spents = await App.m.GetListSpent();
+            List<Spent> spents2 = new List<Spent>();
+            foreach (var item in spents)
+            {
+                string datumS = item.Date.Year.ToString() + "-" + item.Date.Month.ToString();
+                if (x == datumS)
+                {
+                    spents2.Add(item);
+                }
+            }
+            collectionView.ItemsSource = spents2;
         }
     }
 }
