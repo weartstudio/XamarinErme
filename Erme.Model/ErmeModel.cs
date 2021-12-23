@@ -23,6 +23,7 @@ namespace Erme.Model
             }
         }
 
+
         // spent
         public async Task<List<Spent>> GetListSpent()
         {
@@ -45,6 +46,7 @@ namespace Erme.Model
             spent.CategoryId = cat.Id;
             return await Database.Add(spent);
         }
+       
 
         // category
         public async Task<List<Category>> GetListCat()

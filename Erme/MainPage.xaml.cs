@@ -21,7 +21,6 @@ namespace Erme
         protected override void OnAppearing()
         {
             base.OnAppearing();
-
            
         }
 
