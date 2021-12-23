@@ -15,23 +15,31 @@ namespace Erme
         {
             InitializeComponent();
             Title = "Költések";
+            datumok();
         }
 
-
-        protected override async void OnAppearing()
+        protected override void OnAppearing()
         {
             base.OnAppearing();
 
+           
+        }
+
+        private async void datumok()
+        {
             List<Spent> spents = await App.m.GetListSpent();
             List<DateTime> x = spents.Select(d => new DateTime(d.Date.Year, d.Date.Month, 1)).Distinct().ToList();
+            List<string> datumok = new List<string>();
             x.Sort();
             int megsz = x.Count;
             foreach (var item in x)
             {
                 string datumS = item.Year.ToString() + "-" + item.Month.ToString();
-                HonapValaszto.Items.Add(datumS);
+                //HonapValaszto.Items.Add(datumS);
+                datumok.Add(datumS);
             }
-            
+            HonapValaszto.ItemsSource = datumok;
+
             HonapValaszto.SelectedIndex = megsz - 1;
         }
 
