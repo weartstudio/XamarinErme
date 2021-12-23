@@ -8,7 +8,7 @@
         <StackLayout Padding="20">
 
             <Label Text="Melyik hónapra állítod be? (csak a hónap számít)" FontSize="14" />
-            <DatePicker x:Name="datePicker" Date="{x:Static system:DateTime.Today}" />
+            <DatePicker x:Name="datePicker" Date="{x:Static system:DateTime.Today}" Margin="0,0,0,20"  />
 
             <Label Text="Mennyi a kötlségkeret?" FontSize="14" />
             <Entry x:Name="mennyi" Keyboard="Numeric" Margin="0,0,0,20" />
