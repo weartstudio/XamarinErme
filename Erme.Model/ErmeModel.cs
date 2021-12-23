@@ -28,6 +28,13 @@ namespace Erme.Model
         {
             return await Database.GetSpentAsync();
         }
+        public async Task<List<Spent>> GetListMonthSpent()
+        {
+            List<Spent> spents = await Database.GetSpentAsync();
+            List<Spent> months = new List<Spent>();
+
+            return spents;
+        }
         public async Task<int> AddSpent(String t,int a,DateTime d,string c)
         {
             Spent spent = new Spent();

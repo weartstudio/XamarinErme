@@ -22,6 +22,16 @@ namespace Erme
         {
             base.OnAppearing();
             collectionView.ItemsSource = await App.m.GetListSpent();
+
+            List<Spent> spents = await App.m.GetListSpent();
+            List<DateTime> x = spents.Select(d => new DateTime(d.Date.Year, d.Date.Month, 1)).Distinct().ToList();
+            //HonapValaszto.ItemsSource = x;
+            foreach (var item in x)
+            {
+                string datumS = item.Year.ToString() + "-" + item.Month.ToString();
+                HonapValaszto.Items.Add(datumS);
+            }
+            HonapValaszto.SelectedIndex = 1;
         }
 
         private async void NewSpentButton_Clicked(object sender, EventArgs e)
