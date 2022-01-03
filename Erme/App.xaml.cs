@@ -9,6 +9,8 @@ namespace Erme
     {
 
         public static ErmeModel m = new Model.ErmeModel();
+        public static SpentModel sp = new Model.SpentModel();
+
         public NavigationPage NavPage { get; private set; }
 
         public App()

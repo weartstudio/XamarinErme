@@ -16,6 +16,7 @@
             <ListView.Header>
                 <StackLayout Padding="20,20,20,0">
                     <Picker x:Name="HonapValaszto" SelectedIndexChanged="HonapValaszto_SelectedIndexChanged" />
+                    <Label x:Name="alert" Text="Az összköltés túllépte a beállított költségkeretet ebben a hónapban." HorizontalTextAlignment="Center" Background="red" Padding="10" IsVisible="false"></Label>
                 </StackLayout>
             </ListView.Header>
             <ListView.ItemTemplate>
@@ -31,6 +32,12 @@
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
+            <ListView.Footer>
+                <FlexLayout JustifyContent="SpaceBetween" Padding="20,12">
+                    <Label Text="Összes költés" FontAttributes="Bold"></Label>
+                    <Label x:Name="amountAll" FontAttributes="Bold"></Label>
+                </FlexLayout>
+            </ListView.Footer>
         </ListView>
 
     </StackLayout>

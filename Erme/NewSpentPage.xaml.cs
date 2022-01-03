@@ -61,7 +61,7 @@ namespace Erme
                 return;
             }
 
-            await App.m.AddSpent(t,a,d,c);
+            await App.sp.AddSpent(t,a,d,c);
             await (App.Current as App).NavPage.Navigation.PushAsync(new MainPage());
         }
 

@@ -23,31 +23,6 @@ namespace Erme.Model
             }
         }
 
-
-        // spent
-        public async Task<List<Spent>> GetListSpent()
-        {
-            return await Database.GetSpentAsync();
-        }
-        public async Task<List<Spent>> GetListMonthSpent()
-        {
-            List<Spent> spents = await Database.GetSpentAsync();
-            List<Spent> months = new List<Spent>();
-
-            return spents;
-        }
-        public async Task<int> AddSpent(String t,int a,DateTime d,string c)
-        {
-            Spent spent = new Spent();
-            spent.Title = t;
-            spent.Amount = a;
-            spent.Date = d;
-            var cat = await Database.GetSpecCatAsync(c);
-            spent.CategoryId = cat.Id;
-            return await Database.Add(spent);
-        }
-       
-
         // category
         public async Task<List<Category>> GetListCat()
         {
@@ -83,6 +58,9 @@ namespace Erme.Model
         {
             return await Database.Delete(c);
         }
+
+        
+
 
     }
 }

@@ -18,28 +18,12 @@ namespace Erme
             datumok();
         }
 
-        protected override void OnAppearing()
-        {
-            base.OnAppearing();
-           
-        }
-
         private async void datumok()
         {
-            List<Spent> spents = await App.m.GetListSpent();
-            List<DateTime> x = spents.Select(d => new DateTime(d.Date.Year, d.Date.Month, 1)).Distinct().ToList();
-            List<string> datumok = new List<string>();
-            x.Sort();
-            int megsz = x.Count;
-            foreach (var item in x)
-            {
-                string datumS = item.Year.ToString() + "-" + item.Month.ToString();
-                //HonapValaszto.Items.Add(datumS);
-                datumok.Add(datumS);
-            }
-            HonapValaszto.ItemsSource = datumok;
+            List<string> dates = await App.sp.GetSpentDates();
+            HonapValaszto.ItemsSource = dates;
 
-            HonapValaszto.SelectedIndex = megsz - 1;
+            HonapValaszto.SelectedIndex = dates.Count - 1;
         }
 
         private async void NewSpentButton_Clicked(object sender, EventArgs e)
@@ -83,17 +67,20 @@ namespace Erme
         async void HonapValaszto_SelectedIndexChanged(System.Object sender, System.EventArgs e)
         {
             string x = HonapValaszto.SelectedItem.ToString();
-            List<Spent> spents = await App.m.GetListSpent();
-            List<Spent> spents2 = new List<Spent>();
-            foreach (var item in spents)
+            var xy = await App.sp.CollectedSpents(x);
+            collectionView.ItemsSource = xy;
+            
+
+            int aa = 0;
+            foreach (var item in xy)
             {
-                string datumS = item.Date.Year.ToString() + "-" + item.Date.Month.ToString();
-                if (x == datumS)
-                {
-                    spents2.Add(item);
-                }
+                aa += item.Amount;
             }
-            collectionView.ItemsSource = spents2;
+            amountAll.Text = aa.ToString("C0");
+
+            // ha túllépte
+            bool alertIsOn = await App.sp.Alert_if_too_much(x);
+            alert.IsVisible = (alertIsOn) ? true : false;
         }
     }
 }
