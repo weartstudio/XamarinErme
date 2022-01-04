@@ -10,6 +10,7 @@ namespace Erme
 
         public static ErmeModel m = new Model.ErmeModel();
         public static SpentModel sp = new Model.SpentModel();
+        public static Currency c = new Model.Currency();
 
         public NavigationPage NavPage { get; private set; }
 

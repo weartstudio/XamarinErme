@@ -7,4 +7,12 @@
   <ItemGroup>
     <ProjectReference Include="..\Erme.Persistence\Erme.Persistence.csproj" />
   </ItemGroup>
+  <ItemGroup>
+    <None Remove="OpenExchangeRates.NET" />
+    <None Remove="OpenExchangeRatesSharp" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="OpenExchangeRates.NET" Version="1.0.0" />
+    <PackageReference Include="OpenExchangeRatesSharp" Version="1.0.2" />
+  </ItemGroup>
 </Project>
