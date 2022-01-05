@@ -10,9 +10,11 @@
   <ItemGroup>
     <None Remove="OpenExchangeRates.NET" />
     <None Remove="OpenExchangeRatesSharp" />
+    <None Remove="Microcharts.Forms" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="OpenExchangeRates.NET" Version="1.0.0" />
     <PackageReference Include="OpenExchangeRatesSharp" Version="1.0.2" />
+    <PackageReference Include="Microcharts.Forms" Version="0.9.5.9" />
   </ItemGroup>
 </Project>

@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:microcharts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
              x:Class="Erme.MainPage">
 
     <StackLayout>
@@ -12,9 +13,13 @@
             <Button x:Name="NewSpentButton" Clicked="NewSpentButton_Clicked" Text="Új költés" Background="Black" TextColor="Gold" Grid.Column="2" />
         </Grid>
 
+        
+ 
+
         <ListView x:Name="collectionView" ItemTapped="Handle_ItemTapped">
             <ListView.Header>
                 <StackLayout Padding="20,20,20,0">
+                    <microcharts:ChartView x:Name="chartViewBar" HeightRequest="200" />
                     <Picker x:Name="HonapValaszto" SelectedIndexChanged="HonapValaszto_SelectedIndexChanged" />
                     <Label x:Name="alert" Text="Az összköltés túllépte a beállított költségkeretet ebben a hónapban." HorizontalTextAlignment="Center" Background="red" Padding="10" IsVisible="false"></Label>
                 </StackLayout>

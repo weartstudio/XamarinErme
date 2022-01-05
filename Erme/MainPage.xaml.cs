@@ -7,6 +7,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Erme.Persistence;
 using Xamarin.Forms;
+using Microcharts;
+using SkiaSharp;
 
 namespace Erme
 {
@@ -33,6 +35,18 @@ namespace Erme
             HonapValaszto.SelectedIndex = dates.Count - 1;
 
         }
+
+        private void chartRender(List<Spent> x)
+        {
+            List<ChartEntry> entries = new List<ChartEntry>();
+
+            foreach (var item in x)
+            {
+                entries.Add( new ChartEntry(item.Amount) );
+            }
+            chartViewBar.Chart = new LineChart { Entries = entries };
+        }
+
 
         private async void NewSpentButton_Clicked(object sender, EventArgs e)
         {
@@ -98,6 +112,8 @@ namespace Erme
             // ha túllépte
             bool alertIsOn = await App.sp.Alert_if_too_much(x);
             alert.IsVisible = (alertIsOn) ? true : false;
+
+            chartRender(xy);
         }
 
     }
